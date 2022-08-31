@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <div class="row">
+          <div class="current-time col-3" id="time-now">18:42</div>
+          <div class="current-day col-4" id="day-now">Sunday</div>
+        </div>
+
+        <div class="row">
+          <div class="button col-7" id="current-location"><button>Current location</button></div>
+          <div class="col-5"></div>
+        </div>
+
+        <div class="row">
+          <div class="current-temperature col-3" id="current-temp">21˚C</div>
+          <div class="current-city col-4" id="city-now">Kyiv</div>
+        </div>
+
+        <div class="current-temperature-range">
+          <div class="high" id="temp-max-now">22˚C</div>
+          <div class="low" id="temp-min-now">19˚C</div>
+        </div>
+        <div class="mesurments">
+          <div class="feels-like">
+            Feels like: <span id="feels-like">21</span>˚C
+          </div>
+          <div class="humidity">Humidity: <span id="humidity">45</span> %</div>
+          <div class="wind">Wind: <span id="wind">7</span> km/h</div>
+        </div>
+        <form id="city-form">
+          <input
+            class="type-here"
+            id="city-input"
+            type="text"
+            placeholder="Type a city..."
+          />
+          <input class="search" type="submit" value="Search" />
+        </form>
+        <div class="next-days">
+          <div class="Monday row">
+            <div class="day col-5">
+              <span class="align">25 Jul | Monday</span>
+            </div>
+            <div class="col-3">
+              <span class="align"
+                ><img class="weather-pic" src="src/sun-clouds.png" alt=""
+              /></span>
+            </div>
+            <div class="temp col-4">
+              <div class="high">23˚C</div>
+              <div class="low">18˚C</div>
+            </div>
+          </div>
+          <div class="Tuesday row">
+            <div class="day col-5">
+              <span class="align">26 Jul | Tuesday</span>
+            </div>
+            <div class="col-3">
+              <span class="align"
+                ><img class="weather-pic" src="src/sun-clouds.png" alt=""
+              /></span>
+            </div>
+            <div class="temp col-4">
+              <div class="high">24˚C</div>
+              <div class="low">19˚C</div>
+            </div>
+          </div>
+          <div class="Wednesday row">
+            <div class="day col-5">
+              <span class="align">27 Jul | Wednesday</span>
+            </div>
+            <div class="col-3">
+              <span class="align"
+                ><img class="weather-pic" src="src/sun-clouds.png" alt=""
+              /></span>
+            </div>
+            <div class="temp col-4">
+              <div class="high">22˚C</div>
+              <div class="low">19˚C</div>
+            </div>
+          </div>
+          <div class="Thursday row">
+            <div class="day col-5">
+              <span class="align">28 Jul | Thursday</span>
+            </div>
+            <div class="col-3">
+              <span class="align"
+                ><img class="weather-pic" src="src/sun-clouds.png" alt=""
+              /></span>
+            </div>
+            <div class="temp col-4">
+              <div class="high">21˚C</div>
+              <div class="low">16˚C</div>
+            </div>
+          </div>
+          <div class="Friday row">
+            <div class="day col-5">
+              <span class="align">29 Jul | Friday</span>
+            </div>
+            <div class="col-3">
+              <span class="align"
+                ><img class="weather-pic" src="src/sun-clouds.png" alt=""
+              /></span>
+            </div>
+            <div class="temp col-4">
+              <div class="high">20˚C</div>
+              <div class="low">18˚C</div>
+            </div>
+          </div>
+        </div>
+        <img class="current-weather-image" src="src/sun.png" alt="sun" />
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
