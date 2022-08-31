@@ -113,3 +113,9 @@ form {
 .weather-pic {
   width: 30px;
 }
+.footer {
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 20px;
+  margin-left: 0px;
+}
