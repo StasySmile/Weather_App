@@ -39,6 +39,26 @@ function showTemperature(response) {
   let hum = Math.round(response.data.main.humidity);
   let wind = Math.round(response.data.wind.speed);
   let city = response.data.name;
+  let currentIcon = response.data.weather[0].icon;
+  if (currentIcon === "01d" || currentIcon === "01n") {
+    weatherIconNow.setAttribute("src", "src/clear_sky.png");
+  } else if (currentIcon === "02d" || currentIcon === "02n") {
+    weatherIconNow.setAttribute("src", "src/few_clouds.png");
+  } else if (currentIcon === "03d" || currentIcon === "03n") {
+    weatherIconNow.setAttribute("src", "src/scattered_clouds.png");
+  } else if (currentIcon === "04d" || currentIcon === "04n") {
+    weatherIconNow.setAttribute("src", "src/broken_clouds.png");
+  } else if (currentIcon === "09d" || currentIcon === "09n") {
+    weatherIconNow.setAttribute("src", "src/shower_rain.png");
+  } else if (currentIcon === "10d" || currentIcon === "10n") {
+    weatherIconNow.setAttribute("src", "src/rain.png");
+  } else if (currentIcon === "11d" || currentIcon === "11n") {
+    weatherIconNow.setAttribute("src", "src/thunderstorm.png");
+  } else if (currentIcon === "13d" || currentIcon === "13n") {
+    weatherIconNow.setAttribute("src", "src/snow.png");
+  } else if (currentIcon === "50d" || currentIcon === "50n") {
+    weatherIconNow.setAttribute("src", "src/mist.png");
+  }
   currentTemperature.innerHTML = `${temperature}˚C`;
   currentMaxTemp.innerHTML = `${maxTemp}˚C`;
   currentMinTemp.innerHTML = `${minTemp}˚C`;
@@ -67,6 +87,7 @@ let feelsLike = document.querySelector("#feels-like");
 let humidity = document.querySelector("#humidity");
 let windNow = document.querySelector("#wind");
 let cityNow = document.querySelector("#city-now");
+let weatherIconNow = document.querySelector("#weather-icon-now");
 
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", updateLocation);

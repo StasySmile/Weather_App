@@ -9,7 +9,7 @@ body {
   padding: 20px 30px;
   border: 1px solid #6e6e6e;
   width: 600px;
-  height: 650px;
+  height: 600px;
   border-radius: 10px;
   background-color: rgb(250, 250, 250, 0.3);
 }
@@ -30,10 +30,10 @@ button {
   box-shadow: 5px 5px 10px #888888;
 }
 .current-weather-image {
-  width: 140px;
+  width: 70px;
   position: relative;
-  top: -560px;
-  right: -350px;
+  top: -30px;
+  right: -100px;
 }
 .current-temperature {
   font-size: 35px;
@@ -41,7 +41,7 @@ button {
 }
 .current-city {
   font-size: 35px;
-  text-align: right;
+  text-align: canter;
   font-weight: 700;
 }
 .mesurments {
@@ -50,6 +50,7 @@ button {
   left: 430px;
   top: -55px;
   line-height: 20px;
+  padding-top: 5px;
 }
 form {
   position: relative;
@@ -111,7 +112,8 @@ form {
   line-height: 20px;
 }
 .weather-pic {
-  width: 30px;
+  width: 40px;
+  margin-top: -5px;
 }
 .footer {
   position: fixed;
