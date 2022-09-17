@@ -22,14 +22,17 @@ if (minutes < 10) {
 let time = document.querySelector("#time-now");
 time.innerHTML = `${hours}:${minutes}`;
 
-function searchCity(event) {
+function search(city) {
+  let apiKey = "bdab7653b025bf7285d5d743a7dfefad";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
+}
+search("Kyiv");
+
+function handleSubmit(event) {
   event.preventDefault();
   let cityName = document.querySelector("#city-input");
-  let currentCity = document.querySelector("#city-now");
-  currentCity.innerHTML = cityName.value;
-  let apiKey = "bdab7653b025bf7285d5d743a7dfefad";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&units=metric`;
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
+  search(cityName.value);
 }
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
@@ -91,7 +94,7 @@ function updateLocation(event) {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 let cityForm = document.querySelector("#city-form");
-cityForm.addEventListener("submit", searchCity);
+cityForm.addEventListener("submit", handleSubmit);
 let currentTemperature = document.querySelector("#current-temp");
 let currentMaxTemp = document.querySelector("#temp-max-now");
 let currentMinTemp = document.querySelector("#temp-min-now");
