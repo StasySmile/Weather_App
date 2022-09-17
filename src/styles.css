@@ -14,7 +14,7 @@ body {
   padding: 20px 30px;
   border: 1px solid #6e6e6e;
   width: 600px;
-  height: 600px;
+  height: fit-content;
   border-radius: 10px;
   background-color: rgb(250, 250, 250, 0.3);
 }
@@ -94,6 +94,7 @@ form {
 button:hover,
 .search:hover {
   background-color: #5d5d5d;
+  transition: ease-in-out 200ms;
 }
 .next-days {
   text-align: center;
