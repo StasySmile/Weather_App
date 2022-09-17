@@ -44,13 +44,27 @@ button {
   font-size: 35px;
   font-weight: 700;
 }
+.units {
+  font-size: 20px;
+  position: relative;
+  top: -5px;
+}
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+}
+a:hover {
+  color: #5d5d5d;
+}
+.current-temperature .active:hover {
+  cursor: default;
+  color: black;
+}
 .current-city {
   font-size: 35px;
   text-align: canter;
   font-weight: 700;
-}
-.current-temperature-range {
-  
 }
 .mesurments {
   width: 150px;
@@ -58,7 +72,6 @@ button {
   left: 430px;
   top: -65px;
   line-height: 20px;
-  
 }
 form {
   position: relative;
@@ -77,6 +90,10 @@ form {
   border: 3px solid #6e6e6e;
   border-radius: 5px;
   box-shadow: 5px 5px 10px #888888;
+}
+button:hover,
+.search:hover {
+  background-color: #5d5d5d;
 }
 .next-days {
   text-align: center;

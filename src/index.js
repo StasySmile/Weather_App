@@ -27,7 +27,6 @@ function search(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
-search("Kyiv");
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -35,7 +34,8 @@ function handleSubmit(event) {
   search(cityName.value);
 }
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemperature = response.data.main.temp;
+  let temperature = Math.round(celsiusTemperature);
   let maxTemp = Math.round(response.data.main.temp_max);
   let minTemp = Math.round(response.data.main.temp_min);
   let feeling = Math.round(response.data.main.feels_like);
@@ -73,7 +73,7 @@ function showTemperature(response) {
     weatherIconNow.setAttribute("src", "src/mist.png");
     weatherIconNow.setAttribute("alt", response.data.weather[0].description);
   }
-  currentTemperature.innerHTML = `${temperature}˚C`;
+  currentTemperature.innerHTML = `${temperature}`;
   currentMaxTemp.innerHTML = `${maxTemp}˚C`;
   currentMinTemp.innerHTML = `${minTemp}˚C`;
   feelsLike.innerHTML = `${feeling}`;
@@ -93,6 +93,23 @@ function updateLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
+
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temp");
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+function showCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temp");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
 let cityForm = document.querySelector("#city-form");
 cityForm.addEventListener("submit", handleSubmit);
 let currentTemperature = document.querySelector("#current-temp");
@@ -107,3 +124,11 @@ let weatherDescription = document.querySelector("#description");
 
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", updateLocation);
+
+let celsiusTemperature = null;
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusTemperature);
+
+search("Kyiv");
