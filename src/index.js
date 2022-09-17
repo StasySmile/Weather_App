@@ -42,22 +42,31 @@ function showTemperature(response) {
   let currentIcon = response.data.weather[0].icon;
   if (currentIcon === "01d" || currentIcon === "01n") {
     weatherIconNow.setAttribute("src", "src/clear_sky.png");
+    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
   } else if (currentIcon === "02d" || currentIcon === "02n") {
     weatherIconNow.setAttribute("src", "src/few_clouds.png");
+    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
   } else if (currentIcon === "03d" || currentIcon === "03n") {
     weatherIconNow.setAttribute("src", "src/scattered_clouds.png");
+    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
   } else if (currentIcon === "04d" || currentIcon === "04n") {
     weatherIconNow.setAttribute("src", "src/broken_clouds.png");
+    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
   } else if (currentIcon === "09d" || currentIcon === "09n") {
     weatherIconNow.setAttribute("src", "src/shower_rain.png");
+    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
   } else if (currentIcon === "10d" || currentIcon === "10n") {
     weatherIconNow.setAttribute("src", "src/rain.png");
+    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
   } else if (currentIcon === "11d" || currentIcon === "11n") {
     weatherIconNow.setAttribute("src", "src/thunderstorm.png");
+    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
   } else if (currentIcon === "13d" || currentIcon === "13n") {
     weatherIconNow.setAttribute("src", "src/snow.png");
+    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
   } else if (currentIcon === "50d" || currentIcon === "50n") {
     weatherIconNow.setAttribute("src", "src/mist.png");
+    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
   }
   currentTemperature.innerHTML = `${temperature}˚C`;
   currentMaxTemp.innerHTML = `${maxTemp}˚C`;
