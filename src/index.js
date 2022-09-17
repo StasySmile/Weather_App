@@ -40,6 +40,8 @@ function showTemperature(response) {
   let wind = Math.round(response.data.wind.speed);
   let city = response.data.name;
   let currentIcon = response.data.weather[0].icon;
+  let description = response.data.weather[0].description;
+
   if (currentIcon === "01d" || currentIcon === "01n") {
     weatherIconNow.setAttribute("src", "src/clear_sky.png");
     weatherIconNow.setAttribute("alt", response.data.weather[0].description);
@@ -75,6 +77,7 @@ function showTemperature(response) {
   humidity.innerHTML = `${hum}`;
   windNow.innerHTML = `${wind}`;
   cityNow.innerHTML = `${city}`;
+  weatherDescription.innerHTML = `${description}`;
 }
 function showPosition(position) {
   let lat = position.coords.latitude;
@@ -97,6 +100,7 @@ let humidity = document.querySelector("#humidity");
 let windNow = document.querySelector("#wind");
 let cityNow = document.querySelector("#city-now");
 let weatherIconNow = document.querySelector("#weather-icon-now");
+let weatherDescription = document.querySelector("#description");
 
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", updateLocation);

@@ -49,13 +49,16 @@ button {
   text-align: canter;
   font-weight: 700;
 }
+.current-temperature-range {
+  
+}
 .mesurments {
   width: 150px;
   position: relative;
   left: 430px;
-  top: -55px;
+  top: -65px;
   line-height: 20px;
-  padding-top: 5px;
+  
 }
 form {
   position: relative;
