@@ -110,6 +110,35 @@ function showCelsiusTemperature(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = ``;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="Monday row">   
+      <div class="day col-5">
+              <span class="align">25 Jul | ${day}</span>
+          </div>
+          <div class="col-3">
+              <span class="align"
+                ><img class="weather-pic" src="src/few_clouds.png" alt=""
+              /></span>
+          </div>
+          <div class="temp col-4">
+              <div class="high">23˚C</div>
+              <div class="low">18˚C</div>
+          </div>
+          </div>
+          `;
+  });
+
+  forecastHTML = forecastHTML + ``;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 let cityForm = document.querySelector("#city-form");
 cityForm.addEventListener("submit", handleSubmit);
 let currentTemperature = document.querySelector("#current-temp");
@@ -132,3 +161,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemperature);
 
 search("Kyiv");
+displayForecast();

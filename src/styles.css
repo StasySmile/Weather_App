@@ -104,8 +104,12 @@ button:hover,
   top: 10px;
 }
 .Monday {
-  background-color: #c9c9c9;
+  background-color: #939393;
   border-radius: 5px;
+  border: 1px solid #5d5d5d;
+}
+.Monday:hover {
+  background-color: #6e6e6e;
 }
 .Tuesday {
   background-color: #aeaeae;
