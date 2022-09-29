@@ -74,7 +74,7 @@ function showTemperature(response) {
     weatherIconNow.setAttribute("src", "src/mist.png");
     weatherIconNow.setAttribute("alt", response.data.weather[0].description);
   }
-  currentTemperature.innerHTML = `${temperature}`;
+  currentTemperature.innerHTML = `${temperature}˚C`;
   currentMaxTemp.innerHTML = `${maxTemp}˚C`;
   currentMinTemp.innerHTML = `${minTemp}˚C`;
   feelsLike.innerHTML = `${feeling}`;
@@ -97,23 +97,6 @@ function showPosition(position) {
 function updateLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
-}
-
-function showFahrenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#current-temp");
-  fahrenheitLink.classList.add("active");
-  celsiusLink.classList.remove("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function showCelsiusTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#current-temp");
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
 function formatDay(timestamp) {
@@ -176,12 +159,6 @@ let weatherDescription = document.querySelector("#description");
 
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", updateLocation);
-
-let celsiusTemperature = null;
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", showCelsiusTemperature);
 
 search("Kyiv");
 displayForecast();
