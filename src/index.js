@@ -33,6 +33,7 @@ function handleSubmit(event) {
   let cityName = document.querySelector("#city-input");
   search(cityName.value);
 }
+
 function showTemperature(response) {
   celsiusTemperature = response.data.main.temp;
   let temperature = Math.round(celsiusTemperature);
@@ -84,6 +85,7 @@ function showTemperature(response) {
 
   getForecast(response.data.coord);
 }
+
 function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -91,6 +93,7 @@ function showPosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(`${apiUrl}`).then(showTemperature);
 }
+
 function updateLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
@@ -104,12 +107,19 @@ function showFahrenheitTemperature(event) {
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
+
 function showCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#current-temp");
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  return days[day];
 }
 
 function getForecast(coordinates) {
@@ -120,30 +130,34 @@ function getForecast(coordinates) {
 }
 
 function displayForecast(response) {
-  console.log(response.data.daily);
+  console.log(response);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = ``;
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="Monday row">   
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="Monday row">   
       <div class="day col-5">
-              <span class="align">25 Jul | ${day}</span>
+              <span class="align">${formatDay(forecastDay.dt)}</span>
           </div>
           <div class="col-3">
               <span class="align"
-                ><img class="weather-pic" src="src/few_clouds.png" alt=""
+                ><img class="weather-pic" id="weather-pic" src="http://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }@2x.png" alt=""
               /></span>
           </div>
           <div class="temp col-4">
-              <div class="high">23˚C</div>
-              <div class="low">18˚C</div>
+              <div class="high">${Math.round(forecastDay.temp.max)}˚C</div>
+              <div class="low">${Math.round(forecastDay.temp.min)}˚C</div>
           </div>
           </div>
           `;
+    }
   });
-
   forecastHTML = forecastHTML + ``;
   forecastElement.innerHTML = forecastHTML;
 }
