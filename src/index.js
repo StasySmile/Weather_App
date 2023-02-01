@@ -45,35 +45,8 @@ function showTemperature(response) {
   let city = response.data.name;
   let currentIcon = response.data.weather[0].icon;
   let description = response.data.weather[0].description;
-
-  if (currentIcon === "01d" || currentIcon === "01n") {
-    weatherIconNow.setAttribute("src", "src/clear_sky.png");
-    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
-  } else if (currentIcon === "02d" || currentIcon === "02n") {
-    weatherIconNow.setAttribute("src", "src/few_clouds.png");
-    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
-  } else if (currentIcon === "03d" || currentIcon === "03n") {
-    weatherIconNow.setAttribute("src", "src/scattered_clouds.png");
-    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
-  } else if (currentIcon === "04d" || currentIcon === "04n") {
-    weatherIconNow.setAttribute("src", "src/broken_clouds.png");
-    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
-  } else if (currentIcon === "09d" || currentIcon === "09n") {
-    weatherIconNow.setAttribute("src", "src/shower_rain.png");
-    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
-  } else if (currentIcon === "10d" || currentIcon === "10n") {
-    weatherIconNow.setAttribute("src", "src/rain.png");
-    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
-  } else if (currentIcon === "11d" || currentIcon === "11n") {
-    weatherIconNow.setAttribute("src", "src/thunderstorm.png");
-    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
-  } else if (currentIcon === "13d" || currentIcon === "13n") {
-    weatherIconNow.setAttribute("src", "src/snow.png");
-    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
-  } else if (currentIcon === "50d" || currentIcon === "50n") {
-    weatherIconNow.setAttribute("src", "src/mist.png");
-    weatherIconNow.setAttribute("alt", response.data.weather[0].description);
-  }
+  weatherIconNow.setAttribute("src", `src/${currentIcon}.png`);
+  weatherIconNow.setAttribute("alt", description);
   currentTemperature.innerHTML = `${temperature}˚C`;
   currentMaxTemp.innerHTML = `${maxTemp}˚C`;
   currentMinTemp.innerHTML = `${minTemp}˚C`;
@@ -106,14 +79,12 @@ function formatDay(timestamp) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "1dbf926d3b4417bf379db7043bec1047";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
 function displayForecast(response) {
-  console.log(response);
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = ``;
@@ -128,9 +99,9 @@ function displayForecast(response) {
           </div>
           <div class="col-3">
               <span class="align"
-                ><img class="weather-pic" id="weather-pic" src="http://openweathermap.org/img/wn/${
+                ><img class="weather-pic" id="weather-pic" src="src/${
                   forecastDay.weather[0].icon
-                }@2x.png" alt=""
+                }.png" alt="${forecastDay.weather[0].description}"
               /></span>
           </div>
           <div class="temp col-4">
