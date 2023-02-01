@@ -122,7 +122,7 @@ function displayForecast(response) {
     if (index < 5) {
       forecastHTML =
         forecastHTML +
-        `<div class="Monday row">   
+        `<div class="Monday row" id='day${index}'>   
       <div class="day col-5">
               <span class="align">${formatDay(forecastDay.dt)}</span>
           </div>
