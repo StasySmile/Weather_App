@@ -45,7 +45,7 @@ function showTemperature(response) {
   let city = response.data.name;
   let currentIcon = response.data.weather[0].icon;
   let description = response.data.weather[0].description;
-  weatherIconNow.setAttribute("src", `src/${currentIcon}.png`);
+  weatherIconNow.setAttribute("src", `src/img/${currentIcon}.png`);
   weatherIconNow.setAttribute("alt", description);
   currentTemperature.innerHTML = `${temperature}˚C`;
   currentMaxTemp.innerHTML = `${maxTemp}˚C`;
@@ -99,7 +99,7 @@ function displayForecast(response) {
           </div>
           <div class="col-3">
               <span class="align"
-                ><img class="weather-pic" id="weather-pic" src="src/${
+                ><img class="weather-pic" id="weather-pic" src="src/img/${
                   forecastDay.weather[0].icon
                 }.png" alt="${forecastDay.weather[0].description}"
               /></span>
